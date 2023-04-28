@@ -13,6 +13,7 @@ const app = Vue.createApp({
             // inStock: false,
             inventory: 10,
             onSale: true,
+            details: ['50% cotton', '30% wool', '20% polyester']
         }
     }
 })
