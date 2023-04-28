@@ -42,6 +42,12 @@
                         instead of removing elements like above -->
                     <p v-show="onSale">On Sale</p>
 
+                    <!-- List rendering with v-for directive -->
+                    <!-- Like React, we should set keys on list items, do this w/ v-bind or ":" -->
+                    <ul>
+                        <li v-for="detail in details">{{ detail }}</li>
+                    </ul>
+                    <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
                     <!-- Attr-binding can be used for conditional styling, href setting, even enable/disable elements -->
                     <!-- <a :href="socksLink" target="_blank">Learn about socks!</a> -->
                 </div>
