@@ -17,6 +17,8 @@
         <!-- double curls similar to React, allows us to write JS -->
         <div class="nav-bar"></div>
 
+        <div class="cart">Cart{{ cart }}</div>
+
         <div class="product-display">
             <div class="product-container">
                 <div class="product-image">
@@ -50,6 +52,8 @@
                     <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
                     <!-- Attr-binding can be used for conditional styling, href setting, even enable/disable elements -->
                     <!-- <a :href="socksLink" target="_blank">Learn about socks!</a> -->
+                    
+                    <button class="button">Add to Cart</button>
                 </div>
             </div>
         </div>

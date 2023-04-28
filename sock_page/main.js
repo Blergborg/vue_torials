@@ -6,6 +6,7 @@
 const app = Vue.createApp({
     data() {        // this line shorthad for ( data: function() { )
         return {
+            cart: 0,
             product: "Socks",
             description: "Stop sniffing them. Don't be weird.",
             image: './assets/images/socks_green.jpg',
