@@ -33,8 +33,17 @@
                 
                 <div class="product-info">
                     <h1>{{ product }}</h1>
+                    <!-- Conditional rendering with v-if and v-else directives -->
+                    <!-- NOTE: fallback v-else is not always requrired -->
+                    <p v-if="inventory > 10">In Stock</p>
+                    <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
+                    <p v-else>Out of Stock</p>
+                    <!-- Can also use v-show to toggle visibility (better performance for things that toggle often) 
+                        instead of removing elements like above -->
+                    <p v-show="onSale">On Sale</p>
+
                     <!-- Attr-binding can be used for conditional styling, href setting, even enable/disable elements -->
-                    <!-- <a :href="socks_link">Learn about socks!</a> -->
+                    <!-- <a :href="socksLink" target="_blank">Learn about socks!</a> -->
                 </div>
             </div>
         </div>

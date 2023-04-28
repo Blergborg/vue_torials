@@ -9,7 +9,10 @@ const app = Vue.createApp({
             product: "Socks",
             description: "Stop sniffing them. Don't be weird.",
             image: './assets/images/socks_green.jpg',
-            socks_link: 'https://en.wikipedia.org/wiki/Sock',
+            socksLink: 'https://en.wikipedia.org/wiki/Sock',
+            // inStock: false,
+            inventory: 10,
+            onSale: true,
         }
     }
 })
