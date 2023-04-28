@@ -7,7 +7,9 @@ const app = Vue.createApp({
     data() {        // this line shorthad for ( data: function() { )
         return {
             product: "Socks",
-            description: "Stop sniffing them. Don't be weird."
+            description: "Stop sniffing them. Don't be weird.",
+            image: './assets/images/socks_green.jpg',
+            socks_link: 'https://en.wikipedia.org/wiki/Sock',
         }
     }
 })
