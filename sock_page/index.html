@@ -11,11 +11,20 @@
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
 </head>
 <body>
+    <!-- This div AND everything W/IN it have access to the Vue app -->
     <div id="app">
-        <h1>Product goes here</h1>
+        <!-- with app mounted, can now access "product" returned by data() property -->
+        <!-- double curls similar to React, allows us to write JS -->
+        <h1>{{ product }}</h1> 
+        <p>{{ description }}</p>
     </div>
 
-    <!-- Import JS -->
+    <!-- Import Vue App -->
     <script src="./main.js"></script>
+
+    <!-- Mount App -->
+    <script>
+        const mountedApp = app.mount('#app')  // mount our app const into the DOM, then plug it into the div w/ id app
+    </script>
 </body>
 </html>
