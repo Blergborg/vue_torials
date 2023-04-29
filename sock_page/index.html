@@ -18,74 +18,17 @@
         <div class="nav-bar"></div>
 
         <div class="cart">Cart {{ cart }}</div>
-
-        <div class="product-display">
-            <div class="product-container">
-                <div class="product-image">
-                    <!-- "v-bind:" DIRECTIVE in front of attr creates a relationship that allows us to pass it data() properties" -->
-                    <!-- specifically, it dynamically binds an ATTRIBUTE to an EXPRESSION -->
-                    <!-- NOTE: "" get treated like {{}} in this case, so we are using a JS expression. -->
-
-                    <!-- Long Syntax for attr binding -->
-                    <!-- <img v-bind:src="image" /> --> 
-
-                    <!-- Short hand syntax for attr binding is just prepend attr w/ ":" -->
-                    <img :src="image" /> 
-                </div>
-                
-                <div class="product-info">
-                    <h1>{{ productTitle }}</h1>
-                    <!-- Conditional rendering with v-if and v-else directives -->
-                    <!-- NOTE: fallback v-else is not always requrired -->
-                    <p v-if="inventory > 10">In Stock</p>
-                    <p v-else-if="inventory <= 10 && inventory > 0">Almost sold out!</p>
-                    <p v-else>Out of Stock</p>
-                    <!-- Can also use v-show to toggle visibility (better performance for things that toggle often) 
-                        instead of removing elements like above -->
-                    <p v-show="onSale">On Sale</p>
-
-                    <!-- List rendering with v-for directive -->
-                    <!-- Like React, we should set keys on list items, do this w/ v-bind or ":" -->
-                    <ul>
-                        <li v-for="detail in details">{{ detail }}</li>
-                    </ul>
-                    <div 
-                        class="color-circle"
-                        :style="{ backgroundColor: variant.color }"
-                        v-for="(variant, index) in variants" 
-                        :key="variant.id" 
-                        @mouseover="updateVariant(index)"
-                    >
-                    </div>
-                    <!-- NOTE for inline style-binding above: like in React, we need to use camelcase to reference css properties -->
-
-                    <!-- Attr-binding can be used for conditional styling, href setting, even enable/disable elements -->
-                    <!-- <a :href="socksLink" target="_blank">Learn about socks!</a> -->
-                    
-                    <!-- Event binding with v-on directive -->
-                    <!-- v-on:*event here*="*expression we want to trigger here*" -->
-                    <!-- Can inline expression for simple operations -->
-                    <!-- <button class="button" v-on:click="cart += 1">Add to Cart</button> -->
-
-                    <!-- Can also invoke more complex methods from a vue app's methods property-->
-                    <!-- NOTE: shorthand for v-on is "@" like ":" for v-bind -->
-                    <!-- Can conditionally disable button and conditionally add styling class to make the button look unclickable -->
-                    <!-- Could also use ternary operators to swap between style classes that conflict. -->
-                    <button 
-                        class="button"
-                        :class="{ disabledButton: inventory == 0 }" 
-                        @click="addToCart"
-                        :disabled="inventory == 0"
-                    >
-                        Add to Cart
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+        <!-- pass in premium data from main.js as value for required premimum prop of product-display component -->
+        <!-- add v-bind ":" to premium prop so the component can react to changes in the source data value in main.js -->
+        <product-display :premium="premium"></product-display>
+    </div>    
 
     <!-- Import Vue App -->
     <script src="./main.js"></script>
+
+    <!-- Import Components -->
+    <script src="./components/ProductDisplay.js"></script>
+    <script src="./components/ProductDetails.js"></script>
 
     <!-- Mount App -->
     <script>
