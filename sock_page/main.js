@@ -8,6 +8,7 @@ const app = Vue.createApp({
         return {
             cart: 0,
             product: "Socks",
+            brand: 'Vue Mastery',
             description: "Stop sniffing them. Don't be weird.",
             image: './assets/images/socks_green.jpg',
             socksLink: 'https://en.wikipedia.org/wiki/Sock',
