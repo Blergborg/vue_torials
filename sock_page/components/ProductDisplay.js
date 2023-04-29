@@ -71,6 +71,8 @@ app.component('product-display', {
                 </button>
             </div>
         </div>
+        <!-- add review form component -->
+        <review-form @review-submitted="addReview"></review-form>
     </div>`,
 
     // data() returns an obj version of the previous const product = "Socks"
@@ -86,6 +88,8 @@ app.component('product-display', {
                 {id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50, onSale: false},
                 {id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0, onSale: true},
             ],
+            // add reviews array to store review objects emitted from form submission
+            reviews: [],
             // can also add styles object(s) w/in data property to prevent messy inline styling
             styles: {
                 color: 'red',
@@ -106,6 +110,10 @@ app.component('product-display', {
         updateVariant(index){
             this.selectedVariant = index
             console.log(index);
+        },
+        // add emitted review obj to reviews array
+        addReview(review) {
+            this.reviews.push(review);
         }
     },
     // Add computed proerties property to make composition functions. Can now just reference 'productTitle' as a property.
