@@ -100,7 +100,8 @@ app.component('product-display', {
             // props are used to funnel data down from parents to children.
             // children can't pass props back up to parents, to tell parents to change data children 'emit events'
             // an emitted event bubbles up and passes listeners that can respond to this event. (added in index.html)
-            this.$emit('add-to-cart')
+            // the first arg is the name of the event, the second is the "payload". when the updateCart method is triggered by this event is has access to the paylaod.
+            this.$emit('add-to-cart', this.variants[this.selectedVariant].id)
         },
         updateVariant(index){
             this.selectedVariant = index

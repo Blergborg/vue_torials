@@ -7,13 +7,13 @@ const app = Vue.createApp({
     data() {        // this line shorthad for ( data: function() { )
         return {
             // Moved all except cart into a component b/c cart was the only data that should remain global scope.
-            cart: 0,
+            cart: [],
             premium: true,
         }
     },
     methods: {
-        updateCart() {
-            this.cart += 1
+        updateCart(id) {
+            this.cart.push(id)
         },
     },
     
