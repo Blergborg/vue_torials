@@ -12,11 +12,10 @@ const app = Vue.createApp({
             description: "Stop sniffing them. Don't be weird.",
             selectedVariant: 0,
             socksLink: 'https://en.wikipedia.org/wiki/Sock',
-            onSale: true,
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
-                {id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50},
-                {id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0},
+                {id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50, onSale: false},
+                {id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0, onSale: true},
             ],
             // can also add styles object(s) w/in data property to prevent messy inline styling
             styles: {
@@ -46,6 +45,9 @@ const app = Vue.createApp({
         },
         inventory() {
             return this.variants[this.selectedVariant].quantity
+        },
+        onSale() {
+            return this.variants[this.selectedVariant].onSale
         }
     }
 })
