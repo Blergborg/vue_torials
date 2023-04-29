@@ -52,9 +52,9 @@
                     <div 
                         class="color-circle"
                         :style="{ backgroundColor: variant.color }"
-                        v-for="variant in variants" 
+                        v-for="(variant, index) in variants" 
                         :key="variant.id" 
-                        @mouseover="updateImage(variant.image)"
+                        @mouseover="updateVariant(index)"
                     >
                     </div>
                     <!-- NOTE for inline style-binding above: like in React, we need to use camelcase to reference css properties -->

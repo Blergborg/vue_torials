@@ -10,15 +10,13 @@ const app = Vue.createApp({
             product: "Socks",
             brand: 'Vue Mastery',
             description: "Stop sniffing them. Don't be weird.",
-            image: './assets/images/socks_green.jpg',
+            selectedVariant: 0,
             socksLink: 'https://en.wikipedia.org/wiki/Sock',
-            // inStock: false,
-            inventory: 10,
             onSale: true,
             details: ['50% cotton', '30% wool', '20% polyester'],
             variants: [
-                {id: 2234, color: 'green', image: './assets/images/socks_green.jpg'},
-                {id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg'},
+                {id: 2234, color: 'green', image: './assets/images/socks_green.jpg', quantity: 50},
+                {id: 2235, color: 'blue', image: './assets/images/socks_blue.jpg', quantity: 0},
             ],
             // can also add styles object(s) w/in data property to prevent messy inline styling
             styles: {
@@ -31,8 +29,9 @@ const app = Vue.createApp({
         addToCart() {
             this.cart += 1  // "this.cart" references cart in our data.
         },
-        updateImage(variantImage){
-            this.image = variantImage
+        updateVariant(index){
+            this.selectedVariant = index
+            console.log(index);
         }
     },
     // Add computed proerties property to make composition functions. Can now just reference 'productTitle' as a property.
@@ -41,6 +40,12 @@ const app = Vue.createApp({
     computed: {
         productTitle() {
             return this.brand + ' ' + this.product
+        },
+        image() {
+            return this.variants[this.selectedVariant].image
+        },
+        inventory() {
+            return this.variants[this.selectedVariant].quantity
         }
     }
 })
