@@ -96,7 +96,11 @@ app.component('product-display', {
     methods: {
         // When first modularizing code, this stops working. Component no longer has access to the 'cart' property that stayed in its parent.
         addToCart() {
-            this.cart += 1  // "this.cart" references cart in our data.
+            //this.cart += 1  // "this.cart" references cart in our data.
+            // props are used to funnel data down from parents to children.
+            // children can't pass props back up to parents, to tell parents to change data children 'emit events'
+            // an emitted event bubbles up and passes listeners that can respond to this event. (added in index.html)
+            this.$emit('add-to-cart')
         },
         updateVariant(index){
             this.selectedVariant = index
