@@ -49,7 +49,14 @@
                     <ul>
                         <li v-for="detail in details">{{ detail }}</li>
                     </ul>
-                    <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+                    <div 
+                        class="color-circle"
+                        v-for="variant in variants" 
+                        :key="variant.id" 
+                        @mouseover="updateImage(variant.image)"
+                    >
+                        {{ variant.color }}
+                    </div>
                     <!-- Attr-binding can be used for conditional styling, href setting, even enable/disable elements -->
                     <!-- <a :href="socksLink" target="_blank">Learn about socks!</a> -->
                     
