@@ -34,5 +34,13 @@ const app = Vue.createApp({
         updateImage(variantImage){
             this.image = variantImage
         }
+    },
+    // Add computed proerties property to make composition functions. Can now just reference 'productTitle' as a property.
+    // NOTE: Computed properties actually CACHE THEIR VALUES so they only update when the result changes. 
+    // More performant than inline composition of data.
+    computed: {
+        productTitle() {
+            return this.brand + ' ' + this.product
+        }
     }
 })
