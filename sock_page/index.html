@@ -51,12 +51,14 @@
                     </ul>
                     <div 
                         class="color-circle"
+                        :style="{ backgroundColor: variant.color }"
                         v-for="variant in variants" 
                         :key="variant.id" 
                         @mouseover="updateImage(variant.image)"
                     >
-                        {{ variant.color }}
                     </div>
+                    <!-- NOTE for inline style-binding above: like in React, we need to use camelcase to reference css properties -->
+
                     <!-- Attr-binding can be used for conditional styling, href setting, even enable/disable elements -->
                     <!-- <a :href="socksLink" target="_blank">Learn about socks!</a> -->
                     
@@ -67,7 +69,16 @@
 
                     <!-- Can also invoke more complex methods from a vue app's methods property-->
                     <!-- NOTE: shorthand for v-on is "@" like ":" for v-bind -->
-                    <button class="button" @click="addToCart">Add to Cart</button>
+                    <!-- Can conditionally disable button and conditionally add styling class to make the button look unclickable -->
+                    <!-- Could also use ternary operators to swap between style classes that conflict. -->
+                    <button 
+                        class="button"
+                        :class="{ disabledButton: inventory == 0 }" 
+                        @click="addToCart"
+                        :disabled="inventory == 0"
+                    >
+                        Add to Cart
+                    </button>
                 </div>
             </div>
         </div>
